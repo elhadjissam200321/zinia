@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hydrating Serum | ZINAIA Skincare</title>
+  <meta name="description" content="Shop our bestselling Hydrating Serum - premium skincare for radiant, healthy skin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">ZINAIA<span>.</span></a>
+      <nav class="nav-desktop">
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="routines.html" class="nav-link">Routines</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="header-btn search-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+        <button class="header-btn cart-btn" aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span class="cart-count" style="display: none;">0</span>
+        </button>
+        <button class="header-btn menu-btn" aria-label="Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-wrapper">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="index.html" class="breadcrumb-link">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="shop.html" class="breadcrumb-link">Shop</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Hydrating Serum</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Product Section -->
+  <section class="product-page section">
+    <div class="container">
+      <div class="product-layout">
+        <!-- Product Gallery -->
+        <div class="product-gallery">
+          <div class="product-gallery-main">
+            <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&h=800&fit=crop" alt="Hydrating Serum" class="product-gallery-image" id="main-image">
+            <span class="product-badge">Bestseller</span>
+          </div>
+          <div class="product-gallery-thumbs">
+            <button class="product-thumb active" onclick="changeImage(this, 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&h=800&fit=crop')">
+              <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=150&h=150&fit=crop" alt="Hydrating Serum front view">
+            </button>
+            <button class="product-thumb" onclick="changeImage(this, 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800&h=800&fit=crop')">
+              <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=150&h=150&fit=crop" alt="Hydrating Serum texture">
+            </button>
+            <button class="product-thumb" onclick="changeImage(this, 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800&h=800&fit=crop')">
+              <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=150&h=150&fit=crop" alt="Hydrating Serum lifestyle">
+            </button>
+            <button class="product-thumb" onclick="changeImage(this, 'https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=800&h=800&fit=crop')">
+              <img src="https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=150&h=150&fit=crop" alt="Hydrating Serum ingredients">
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-details">
+          <div class="product-details-header">
+            <p class="product-details-category">Serums</p>
+            <h1 class="product-details-title">Hydrating Serum</h1>
+            <div class="product-details-rating">
+              <div class="product-rating-stars">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <span class="product-rating-count">(127 reviews)</span>
+            </div>
+            <p class="product-details-price">349 DHS</p>
+          </div>
+
+          <p class="product-details-description">
+            Our bestselling Hydrating Serum delivers intense moisture with hyaluronic acid and vitamin E. This lightweight formula absorbs quickly, leaving your skin plump, smooth, and radiant. Perfect for all skin types.
+          </p>
+
+          <!-- Size Selection -->
+          <div class="product-option">
+            <label class="product-option-label">Size</label>
+            <div class="product-size-options">
+              <button class="product-size-btn active" onclick="selectSize(this)">30ml</button>
+              <button class="product-size-btn" onclick="selectSize(this)">50ml</button>
+              <button class="product-size-btn" onclick="selectSize(this)">100ml</button>
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div class="product-option">
+            <label class="product-option-label">Quantity</label>
+            <div class="product-qty">
+              <button class="product-qty-btn qty-minus" aria-label="Decrease quantity">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                </svg>
+              </button>
+              <span class="qty-value">1</span>
+              <button class="product-qty-btn qty-plus" aria-label="Increase quantity">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Add to Cart -->
+          <div class="product-actions">
+            <button class="btn btn-primary product-add-btn" onclick="addProductToCart()">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              Add to Cart
+            </button>
+            <button class="btn btn-outline product-wishlist-btn" aria-label="Add to wishlist">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Product Features -->
+          <div class="product-features">
+            <div class="product-feature">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Free shipping over 499 DHS</span>
+            </div>
+            <div class="product-feature">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              <span>30-day returns</span>
+            </div>
+            <div class="product-feature">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <span>Dermatologist tested</span>
+            </div>
+            <div class="product-feature">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              <span>Cruelty free</span>
+            </div>
+          </div>
+
+          <!-- Product Accordions -->
+          <div class="product-accordions">
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>Ingredients</span>
+                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <p>Aqua, Glycerin, Hyaluronic Acid, Niacinamide, Vitamin E, Aloe Vera Extract, Jojoba Oil, Chamomile Extract, Green Tea Extract, Citric Acid, Sodium Benzoate, Potassium Sorbate.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>How to Use</span>
+                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <ol style="padding-left: 1.25rem;">
+                  <li style="margin-bottom: 0.5rem;">Cleanse your face thoroughly and pat dry.</li>
+                  <li style="margin-bottom: 0.5rem;">Apply 2-3 drops to your fingertips.</li>
+                  <li style="margin-bottom: 0.5rem;">Gently press and pat onto face and neck.</li>
+                  <li style="margin-bottom: 0.5rem;">Follow with moisturizer.</li>
+                  <li>Use morning and evening for best results.</li>
+                </ol>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>Shipping & Returns</span>
+                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="accordion-content">
+                <p><strong>Shipping:</strong> Free standard shipping on orders over 499 DHS. Express delivery available for 49 DHS.</p>
+                <p style="margin-top: 0.75rem;"><strong>Returns:</strong> We offer a 30-day return policy for unopened products. Contact our support team to initiate a return.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products -->
+  <section class="section" style="background-color: var(--cream);">
+    <div class="container">
+      <div class="benefits-header">
+        <h2 class="heading-large">You May Also Like</h2>
+        <p class="text-muted" style="margin-top: 1rem;">Complete your skincare routine with these products.</p>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <a href="product.html?id=2">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=400&fit=crop" alt="Glow Moisturizer" class="product-image">
+              <div class="product-quick-add">
+                <button class="product-quick-add-btn" onclick="event.preventDefault(); quickAddToCart(2, 'Glow Moisturizer', 289, 'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=400&fit=crop')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Moisturizers</p>
+              <h3 class="product-name">Glow Moisturizer</h3>
+              <p class="product-price">289 DHS</p>
+            </div>
+          </a>
+        </div>
+        <div class="product-card">
+          <a href="product.html?id=3">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&h=400&fit=crop" alt="Vitamin C Boost" class="product-image">
+              <span class="product-badge">New</span>
+              <div class="product-quick-add">
+                <button class="product-quick-add-btn" onclick="event.preventDefault(); quickAddToCart(3, 'Vitamin C Boost', 399, 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&h=400&fit=crop')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Serums</p>
+              <h3 class="product-name">Vitamin C Boost</h3>
+              <p class="product-price">399 DHS</p>
+            </div>
+          </a>
+        </div>
+        <div class="product-card">
+          <a href="product.html?id=5">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop" alt="Gentle Cleanser" class="product-image">
+              <div class="product-quick-add">
+                <button class="product-quick-add-btn" onclick="event.preventDefault(); quickAddToCart(5, 'Gentle Cleanser', 199, 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Cleansers</p>
+              <h3 class="product-name">Gentle Cleanser</h3>
+              <p class="product-price">199 DHS</p>
+            </div>
+          </a>
+        </div>
+        <div class="product-card">
+          <a href="product.html?id=4">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=400&h=400&fit=crop" alt="Night Repair Cream" class="product-image">
+              <div class="product-quick-add">
+                <button class="product-quick-add-btn" onclick="event.preventDefault(); quickAddToCart(4, 'Night Repair Cream', 449, 'https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=400&h=400&fit=crop')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Treatments</p>
+              <h3 class="product-name">Night Repair Cream</h3>
+              <p class="product-price">449 DHS</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="footer-logo">ZINAIA<span>.</span></p>
+          <p class="footer-description">Premium skincare crafted with clean, effective ingredients for radiant, healthy skin.</p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="1.5"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="1.5"/>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" class="footer-social-link" aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-column-title">Shop</h4>
+          <nav class="footer-links">
+            <a href="shop.html" class="footer-link">All Products</a>
+            <a href="shop.html" class="footer-link">Serums</a>
+            <a href="shop.html" class="footer-link">Moisturizers</a>
+            <a href="shop.html" class="footer-link">Cleansers</a>
+          </nav>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-column-title">Company</h4>
+          <nav class="footer-links">
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+            <a href="faqs.html" class="footer-link">FAQs</a>
+            <a href="routines.html" class="footer-link">Routines</a>
+          </nav>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-column-title">Help</h4>
+          <nav class="footer-links">
+            <a href="shipping.html" class="footer-link">Shipping</a>
+            <a href="faqs.html" class="footer-link">Returns</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+            <a href="terms.html" class="footer-link">Terms of Service</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2024 ZINAIA. All rights reserved.</p>
+        <div class="footer-payments">
+          <span class="footer-payment">VISA</span>
+          <span class="footer-payment">MC</span>
+          <span class="footer-payment">AMEX</span>
+          <span class="footer-payment">PP</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide Cart -->
+  <div class="slide-cart-overlay"></div>
+  <div class="slide-cart">
+    <div class="slide-cart-header">
+      <h3 class="slide-cart-title">Your Cart</h3>
+      <button class="slide-cart-close" aria-label="Close cart">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="slide-cart-shipping">
+      <p class="slide-cart-shipping-text">Add <strong>499 DHS</strong> more for <strong>FREE shipping</strong></p>
+      <div class="slide-cart-shipping-bar">
+        <div class="slide-cart-shipping-progress" style="width: 0%"></div>
+      </div>
+    </div>
+    <div class="slide-cart-items"></div>
+    <div class="slide-cart-footer">
+      <div class="slide-cart-subtotal">
+        <span class="slide-cart-subtotal-label">Subtotal</span>
+        <span class="slide-cart-subtotal-value">0 DHS</span>
+      </div>
+      <a href="checkout.html" class="btn btn-primary slide-cart-checkout-btn">Checkout</a>
+      <button class="slide-cart-continue">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- Slide Menu -->
+  <div class="slide-menu-overlay"></div>
+  <div class="slide-menu">
+    <div class="slide-menu-header">
+      <span class="slide-menu-logo">ZINAIA<span>.</span></span>
+      <button class="slide-menu-close" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="slide-menu-content">
+      <nav class="slide-menu-nav">
+        <a href="index.html" class="slide-menu-link">Home</a>
+        <a href="shop.html" class="slide-menu-link">Shop</a>
+        <a href="routines.html" class="slide-menu-link">Routines</a>
+        <a href="about.html" class="slide-menu-link">About</a>
+        <a href="contact.html" class="slide-menu-link">Contact</a>
+        <a href="faqs.html" class="slide-menu-link">FAQs</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal-overlay"></div>
+  <div class="search-modal">
+    <div class="search-modal-header">
+      <div class="search-modal-input-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="search-modal-input-icon" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input type="text" class="search-modal-input" placeholder="Search products...">
+      </div>
+      <button class="search-modal-close">Cancel</button>
+    </div>
+    <div class="search-modal-content">
+      <div class="search-modal-section">
+        <h4 class="search-modal-section-title">Popular Searches</h4>
+        <div class="search-modal-popular">
+          <button class="search-modal-popular-item">Serum</button>
+          <button class="search-modal-popular-item">Moisturizer</button>
+          <button class="search-modal-popular-item">Vitamin C</button>
+        </div>
+      </div>
+      <div class="search-modal-section">
+        <h4 class="search-modal-section-title">Results</h4>
+        <div class="search-modal-results"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Product page specific functions
+    function changeImage(thumb, src) {
+      document.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      document.getElementById('main-image').src = src;
+    }
+
+    function selectSize(btn) {
+      document.querySelectorAll('.product-size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function addProductToCart() {
+      const qty = parseInt(document.querySelector('.qty-value').textContent);
+      for (let i = 0; i < qty; i++) {
+        quickAddToCart(1, 'Hydrating Serum', 349, 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop');
+      }
+    }
+  </script>
+</body>
+</html>

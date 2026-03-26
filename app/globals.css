@@ -165,4 +165,14 @@
   .animate-fade-in-up {
     animation: fadeInUp 0.6s ease-out forwards;
   }
+
+  /* Scroll line animation for hero */
+  @keyframes scrollLine {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(200%); }
+  }
+
+  .animate-scroll-line {
+    animation: scrollLine 1.8s ease-in-out infinite;
+  }
 }
