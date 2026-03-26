@@ -5,7 +5,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
-import { SlidersHorizontal, X, ChevronDown } from "lucide-react"
+import { SlidersHorizontal, ChevronDown, ShoppingBag } from "lucide-react"
+import { useCart } from "@/contexts/cart-context"
 import { cn } from "@/lib/utils"
 
 const categories = ["All", "Cleansers", "Serums", "Moisturizers", "Sets"]
@@ -91,6 +92,18 @@ export default function ShopPage() {
   const [sortBy, setSortBy] = useState("Featured")
   const [showFilters, setShowFilters] = useState(false)
   const [hoveredId, setHoveredId] = useState<number | null>(null)
+  const { addItem } = useCart()
+
+  const handleQuickAdd = (e: React.MouseEvent, product: typeof products[0]) => {
+    e.preventDefault()
+    e.stopPropagation()
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+    })
+  }
 
   const filteredProducts = products.filter(
     (product) => activeCategory === "All" || product.category === activeCategory
@@ -209,7 +222,11 @@ export default function ShopPage() {
                       hoveredId === product.id ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                     )}
                   >
-                    <button className="w-full bg-card/95 backdrop-blur-sm text-card-foreground py-3 rounded-xl text-sm font-medium hover:bg-card transition-colors">
+                    <button
+                      onClick={(e) => handleQuickAdd(e, product)}
+                      className="w-full bg-card/95 backdrop-blur-sm text-card-foreground py-3 rounded-xl text-sm font-medium hover:bg-card transition-colors flex items-center justify-center gap-2"
+                    >
+                      <ShoppingBag className="h-4 w-4" />
                       Quick Add
                     </button>
                   </div>

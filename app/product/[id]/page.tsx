@@ -5,7 +5,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
-import { Minus, Plus, Star, Droplets, Clock, Sparkles, ChevronDown, Check } from "lucide-react"
+import { Minus, Plus, Star, Droplets, Clock, Sparkles, ChevronDown, Check, ShoppingBag } from "lucide-react"
+import { useCart } from "@/contexts/cart-context"
 import { cn } from "@/lib/utils"
 
 const product = {
@@ -72,6 +73,18 @@ export default function ProductPage() {
   const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   const [expandedSection, setExpandedSection] = useState<string | null>("benefits")
+  const { addItem } = useCart()
+
+  const handleAddToCart = () => {
+    for (let i = 0; i < quantity; i++) {
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.images[0],
+      })
+    }
+  }
 
   return (
     <>
@@ -179,7 +192,11 @@ export default function ProductPage() {
                     <Plus className="h-4 w-4" />
                   </button>
                 </div>
-                <button className="flex-1 btn-luxury bg-primary text-primary-foreground hover:bg-primary/90 rounded-full">
+                <button
+                  onClick={handleAddToCart}
+                  className="flex-1 btn-luxury bg-primary text-primary-foreground hover:bg-primary/90 rounded-full flex items-center justify-center gap-2"
+                >
+                  <ShoppingBag className="h-4 w-4" />
                   Add to Cart
                 </button>
               </div>
