@@ -8,329 +8,281 @@ import gsap from "gsap"
 const slides = [
   {
     id: 1,
-    tagline: "Clean Beauty Essentials",
+    tagline: "New Collection",
     title: "Hydrate your skin",
-    highlight: "for a radiant glow",
-    description: "Discover our curated collection of clean skincare crafted with natural ingredients for visibly healthier skin.",
+    subtitle: "for a radiant glow",
+    cta: "Shop Now",
+    ctaHref: "/shop",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-USHASJB8DJYuPiAVniYfek52EVuXHS.png",
-    productLabel: "Bestseller",
-    productName: "Serum Hydratant",
-    productPrice: "349 DHS",
   },
   {
     id: 2,
-    tagline: "New Collection",
-    title: "Nourish deeply",
-    highlight: "transform your routine",
-    description: "Experience the power of Moroccan botanicals combined with advanced skincare science for lasting results.",
-    image: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=800&h=1000&fit=crop",
-    productLabel: "New",
-    productName: "Creme Nourrissante",
-    productPrice: "299 DHS",
+    tagline: "Moroccan Botanicals",
+    title: "Nourish deeply,",
+    subtitle: "transform your routine",
+    cta: "Discover",
+    ctaHref: "/shop",
+    image: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=1600&h=900&fit=crop&q=80",
   },
   {
     id: 3,
     tagline: "Premium Care",
-    title: "Reveal your glow",
-    highlight: "naturally luminous",
-    description: "Unlock your skin's natural radiance with our vitamin-enriched formulas designed for all skin types.",
-    image: "https://images.unsplash.com/photo-1570194065650-d99fb4b38b15?w=800&h=1000&fit=crop",
-    productLabel: "Exclusive",
-    productName: "Huile Eclat",
-    productPrice: "399 DHS",
+    title: "Reveal your natural",
+    subtitle: "luminous glow",
+    cta: "Explore",
+    ctaHref: "/shop",
+    image: "https://images.unsplash.com/photo-1570194065650-d99fb4b38b15?w=1600&h=900&fit=crop&q=80",
   },
 ]
 
 export function Hero() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isAnimating, setIsAnimating] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
-  const imageRef = useRef<HTMLDivElement>(null)
-  const productCardRef = useRef<HTMLDivElement>(null)
-  const progressRef = useRef<HTMLDivElement>(null)
-  const autoPlayRef = useRef<NodeJS.Timeout | null>(null)
+  const [current, setCurrent] = useState(0)
+  const [animating, setAnimating] = useState(false)
 
-  const animateSlide = useCallback((direction: "next" | "prev" = "next") => {
-    if (isAnimating || !contentRef.current || !imageRef.current || !productCardRef.current) return
-    setIsAnimating(true)
+  // Refs for each slide layer
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([])
+  const textRefs = useRef<(HTMLDivElement | null)[]>([])
+  const autoRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-    const tl = gsap.timeline({
-      onComplete: () => setIsAnimating(false),
-    })
+  const goTo = useCallback(
+    (next: number) => {
+      if (animating || next === current) return
+      setAnimating(true)
 
-    // Animate out
-    tl.to(contentRef.current.children, {
-      opacity: 0,
-      y: direction === "next" ? -30 : 30,
-      stagger: 0.05,
-      duration: 0.4,
-      ease: "power2.inOut",
-    })
-    .to(imageRef.current, {
-      opacity: 0,
-      scale: 1.05,
-      duration: 0.4,
-      ease: "power2.inOut",
-    }, "<")
-    .to(productCardRef.current, {
-      opacity: 0,
-      x: -20,
-      duration: 0.3,
-      ease: "power2.inOut",
-    }, "<0.1")
+      const prevEl = slideRefs.current[current]
+      const nextEl = slideRefs.current[next]
+      const prevText = textRefs.current[current]
+      const nextText = textRefs.current[next]
 
-    // Update slide
-    tl.call(() => {
-      setCurrentSlide((prev) => {
-        if (direction === "next") {
-          return prev === slides.length - 1 ? 0 : prev + 1
-        }
-        return prev === 0 ? slides.length - 1 : prev - 1
+      if (!prevEl || !nextEl || !prevText || !nextText) {
+        setCurrent(next)
+        setAnimating(false)
+        return
+      }
+
+      // Make next slide visible above previous
+      gsap.set(nextEl, { opacity: 0, zIndex: 2 })
+      gsap.set(prevEl, { zIndex: 1 })
+
+      // Text out
+      gsap.to(Array.from(prevText.children), {
+        opacity: 0,
+        y: -20,
+        stagger: 0.05,
+        duration: 0.35,
+        ease: "power2.in",
       })
-    })
 
-    // Animate in
-    tl.fromTo(
-      contentRef.current.children,
-      { opacity: 0, y: direction === "next" ? 30 : -30 },
-      { opacity: 1, y: 0, stagger: 0.08, duration: 0.5, ease: "power2.out" }
-    )
-    .fromTo(
-      imageRef.current,
-      { opacity: 0, scale: 0.95 },
-      { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" },
-      "<0.1"
-    )
-    .fromTo(
-      productCardRef.current,
-      { opacity: 0, x: -30 },
-      { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" },
-      "<0.2"
-    )
-  }, [isAnimating])
+      // Image crossfade
+      gsap.to(nextEl, {
+        opacity: 1,
+        duration: 0.9,
+        ease: "power2.inOut",
+        onComplete: () => {
+          setCurrent(next)
+          setAnimating(false)
+        },
+      })
 
-  const goToSlide = useCallback((index: number) => {
-    if (isAnimating || index === currentSlide) return
-    const direction = index > currentSlide ? "next" : "prev"
-    
-    setIsAnimating(true)
-    const tl = gsap.timeline({
-      onComplete: () => setIsAnimating(false),
-    })
+      // Text in (after a short delay)
+      gsap.set(Array.from(nextText.children), { opacity: 0, y: 30 })
+      gsap.to(Array.from(nextText.children), {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: "power3.out",
+        delay: 0.5,
+      })
+    },
+    [animating, current]
+  )
 
-    tl.to([contentRef.current?.children, imageRef.current, productCardRef.current], {
-      opacity: 0,
-      duration: 0.3,
-      ease: "power2.inOut",
-    })
-    .call(() => setCurrentSlide(index))
-    .to([contentRef.current?.children, imageRef.current, productCardRef.current], {
-      opacity: 1,
-      duration: 0.4,
-      ease: "power2.out",
-      stagger: 0.05,
-    })
-  }, [isAnimating, currentSlide])
+  const next = useCallback(() => {
+    goTo(current === slides.length - 1 ? 0 : current + 1)
+  }, [current, goTo])
 
-  // Initial animation
+  const prev = useCallback(() => {
+    goTo(current === 0 ? slides.length - 1 : current - 1)
+  }, [current, goTo])
+
+  // Auto-advance
   useEffect(() => {
-    if (!contentRef.current || !imageRef.current || !productCardRef.current) return
+    autoRef.current = setTimeout(next, 6000)
+    return () => {
+      if (autoRef.current) clearTimeout(autoRef.current)
+    }
+  }, [current, next])
 
-    gsap.set([contentRef.current.children, imageRef.current, productCardRef.current], { opacity: 0 })
-
-    const tl = gsap.timeline({ delay: 0.3 })
-
-    tl.fromTo(
-      contentRef.current.children,
-      { opacity: 0, y: 40 },
-      { opacity: 1, y: 0, stagger: 0.1, duration: 0.7, ease: "power3.out" }
-    )
-    .fromTo(
-      imageRef.current,
-      { opacity: 0, scale: 0.9 },
-      { opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" },
-      "<0.2"
-    )
-    .fromTo(
-      productCardRef.current,
-      { opacity: 0, x: -40 },
-      { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" },
-      "<0.3"
-    )
+  // Entrance animation
+  useEffect(() => {
+    const text = textRefs.current[0]
+    if (!text) return
+    gsap.set(Array.from(text.children), { opacity: 0, y: 40 })
+    gsap.to(Array.from(text.children), {
+      opacity: 1,
+      y: 0,
+      stagger: 0.12,
+      duration: 0.8,
+      ease: "power3.out",
+      delay: 0.4,
+    })
   }, [])
 
-  // Auto-play with progress
-  useEffect(() => {
-    const duration = 6000
-
-    const startAutoPlay = () => {
-      if (progressRef.current) {
-        gsap.fromTo(
-          progressRef.current,
-          { scaleX: 0 },
-          { scaleX: 1, duration: duration / 1000, ease: "linear" }
-        )
-      }
-      autoPlayRef.current = setTimeout(() => {
-        animateSlide("next")
-      }, duration)
-    }
-
-    startAutoPlay()
-
-    return () => {
-      if (autoPlayRef.current) clearTimeout(autoPlayRef.current)
-      gsap.killTweensOf(progressRef.current)
-    }
-  }, [currentSlide, animateSlide])
-
-  const slide = slides[currentSlide]
-
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#E8DED4]/40 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#D4DDD4]/30 to-transparent rounded-full blur-3xl" />
-      </div>
+    <section
+      className="relative w-full overflow-hidden"
+      style={{ height: "100svh" }}
+      aria-label="Hero slider"
+    >
+      {/* Slide backgrounds */}
+      {slides.map((slide, i) => (
+        <div
+          key={slide.id}
+          ref={(el) => { slideRefs.current[i] = el }}
+          className="absolute inset-0"
+          style={{
+            opacity: i === 0 ? 1 : 0,
+            zIndex: i === 0 ? 1 : 0,
+          }}
+        >
+          <Image
+            src={slide.image}
+            alt={slide.title}
+            fill
+            priority={i === 0}
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          {/* Dark gradient overlay for text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/10" />
+        </div>
+      ))}
 
-      <div className="container-luxury relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Content */}
-          <div ref={contentRef} className="order-2 lg:order-1 text-center lg:text-left">
-            <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-6">
+      {/* Text layers */}
+      {slides.map((slide, i) => (
+        <div
+          key={slide.id}
+          ref={(el) => { textRefs.current[i] = el }}
+          className="absolute inset-0 flex flex-col justify-end pb-24 md:pb-32"
+          style={{
+            zIndex: 10,
+            pointerEvents: i === current ? "auto" : "none",
+            visibility: i === current ? "visible" : "hidden",
+          }}
+        >
+          <div className="container-luxury">
+            {/* Tagline */}
+            <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-white/70 mb-4 font-sans">
               {slide.tagline}
             </p>
-            <h1 className="heading-display mb-8 text-balance">
+
+            {/* Headline */}
+            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-none tracking-tight mb-6 text-balance">
               {slide.title}
               <br />
-              <span className="text-accent">{slide.highlight}</span>
+              <span className="text-[#C4A77D]">{slide.subtitle}</span>
             </h1>
-            <p className="body-large text-muted-foreground max-w-md mx-auto lg:mx-0 mb-10">
-              {slide.description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link
-                href="/shop"
-                className="btn-luxury bg-primary text-primary-foreground hover:bg-primary/90"
+
+            {/* CTA */}
+            <Link
+              href={slide.ctaHref}
+              className="inline-flex items-center gap-3 bg-white text-[#2C2825] text-sm font-sans font-medium tracking-widest uppercase px-8 py-4 hover:bg-[#C4A77D] hover:text-white transition-colors duration-300"
+            >
+              {slide.cta}
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+                aria-hidden="true"
               >
-                Shop Now
-              </Link>
-              <Link
-                href="/routines"
-                className="btn-luxury border border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-              >
-                Build Your Routine
-              </Link>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="flex items-center gap-8 justify-center lg:justify-start mt-12 pt-12 border-t border-border">
-              <div className="text-center">
-                <p className="font-serif text-2xl text-accent">100%</p>
-                <p className="text-xs tracking-wide text-muted-foreground mt-1">Clean Ingredients</p>
-              </div>
-              <div className="text-center">
-                <p className="font-serif text-2xl text-accent">+5000</p>
-                <p className="text-xs tracking-wide text-muted-foreground mt-1">Happy Customers</p>
-              </div>
-              <div className="text-center">
-                <p className="font-serif text-2xl text-accent">4.9</p>
-                <p className="text-xs tracking-wide text-muted-foreground mt-1">Average Rating</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Hero Image */}
-          <div className="order-1 lg:order-2 relative">
-            <div className="relative aspect-[4/5] max-w-lg mx-auto">
-              {/* Decorative frame */}
-              <div className="absolute -inset-4 border border-accent/20 rounded-3xl" />
-              <div className="absolute -inset-8 border border-accent/10 rounded-3xl hidden md:block" />
-
-              <div ref={imageRef} className="relative h-full rounded-2xl overflow-hidden bg-gradient-to-b from-[#E8DED4] to-[#D4C4B0]">
-                <Image
-                  src={slide.image}
-                  alt={`ZINAIA Skincare - ${slide.productName}`}
-                  fill
-                  className="object-cover object-top"
-                  priority
-                />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
-              </div>
-
-              {/* Floating product card */}
-              <div
-                ref={productCardRef}
-                className="absolute -bottom-6 -left-6 md:-left-12 bg-card p-4 rounded-2xl shadow-xl max-w-[200px]"
-              >
-                <p className="text-xs tracking-wide text-muted-foreground mb-1">{slide.productLabel}</p>
-                <p className="font-serif text-sm mb-2">{slide.productName}</p>
-                <p className="text-accent font-medium">{slide.productPrice}</p>
-              </div>
-            </div>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         </div>
+      ))}
 
-        {/* Slider Controls */}
-        <div className="flex items-center justify-center lg:justify-start gap-4 mt-12">
-          {/* Navigation Dots */}
-          <div className="flex items-center gap-3">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`relative w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentSlide
-                    ? "bg-accent w-8"
-                    : "bg-border hover:bg-accent/50"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              >
-                {index === currentSlide && (
-                  <div
-                    ref={index === currentSlide ? progressRef : null}
-                    className="absolute inset-0 bg-accent/50 rounded-full origin-left"
-                  />
-                )}
-              </button>
-            ))}
-          </div>
-
-          {/* Arrow Controls */}
-          <div className="flex items-center gap-2 ml-4">
+      {/* Controls — bottom right */}
+      <div className="absolute bottom-8 right-6 md:right-12 z-20 flex items-center gap-4">
+        {/* Dots */}
+        <div className="flex items-center gap-2">
+          {slides.map((_, i) => (
             <button
-              onClick={() => animateSlide("prev")}
-              disabled={isAnimating}
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors disabled:opacity-50"
-              aria-label="Previous slide"
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className="group relative h-[2px] bg-white/30 transition-all duration-300 overflow-hidden"
+              style={{ width: i === current ? 40 : 16 }}
             >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
+              {i === current && (
+                <ProgressBar key={current} duration={6000} />
+              )}
             </button>
-            <button
-              onClick={() => animateSlide("next")}
-              disabled={isAnimating}
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors disabled:opacity-50"
-              aria-label="Next slide"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+          ))}
+        </div>
 
-          {/* Slide Counter */}
-          <div className="text-sm text-muted-foreground ml-4">
-            <span className="text-foreground font-medium">{String(currentSlide + 1).padStart(2, "0")}</span>
-            <span className="mx-1">/</span>
-            <span>{String(slides.length).padStart(2, "0")}</span>
-          </div>
+        {/* Arrows */}
+        <div className="flex items-center gap-1">
+          <button
+            onClick={prev}
+            disabled={animating}
+            aria-label="Previous slide"
+            className="w-10 h-10 flex items-center justify-center border border-white/30 text-white hover:border-white hover:bg-white/10 transition-colors disabled:opacity-40"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            onClick={next}
+            disabled={animating}
+            aria-label="Next slide"
+            className="w-10 h-10 flex items-center justify-center border border-white/30 text-white hover:border-white hover:bg-white/10 transition-colors disabled:opacity-40"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Slide counter */}
+        <span className="text-white/60 text-xs font-sans tracking-widest hidden md:block">
+          {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
+        </span>
+      </div>
+
+      {/* Scroll hint */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 hidden md:flex">
+        <span className="text-white/40 text-[10px] tracking-[0.25em] uppercase font-sans">Scroll</span>
+        <div className="w-px h-8 bg-white/20 relative overflow-hidden">
+          <div className="w-full bg-white/60 animate-scroll-line absolute top-0 left-0" style={{ height: "50%" }} />
         </div>
       </div>
     </section>
+  )
+}
+
+// Animated progress bar for active dot
+function ProgressBar({ duration }: { duration: number }) {
+  const barRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!barRef.current) return
+    gsap.fromTo(
+      barRef.current,
+      { scaleX: 0, transformOrigin: "left center" },
+      { scaleX: 1, duration: duration / 1000, ease: "linear" }
+    )
+  }, [duration])
+
+  return (
+    <div
+      ref={barRef}
+      className="absolute inset-0 bg-white"
+      style={{ transformOrigin: "left center" }}
+    />
   )
 }
