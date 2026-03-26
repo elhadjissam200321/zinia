@@ -1,0 +1,168 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* ZINAÏA Skincare - Soft Luxury Palette */
+  --background: #F5F0EB;
+  --foreground: #2C2825;
+  --card: #FFFFFF;
+  --card-foreground: #2C2825;
+  --popover: #FFFFFF;
+  --popover-foreground: #2C2825;
+  --primary: #2C2825;
+  --primary-foreground: #F5F0EB;
+  --secondary: #EBE5DE;
+  --secondary-foreground: #2C2825;
+  --muted: #E8E2DB;
+  --muted-foreground: #6B6560;
+  --accent: #C4A77D;
+  --accent-foreground: #2C2825;
+  --destructive: #D4A5A5;
+  --destructive-foreground: #2C2825;
+  --border: #DDD7D0;
+  --input: #DDD7D0;
+  --ring: #C4A77D;
+  --radius: 0.5rem;
+  
+  /* Custom brand colors */
+  --cream: #FAF8F5;
+  --nude: #E8DED4;
+  --gold: #C4A77D;
+  --soft-brown: #8B7355;
+  --warm-gray: #9B9590;
+  --blush: #F2E8E4;
+  --sage: #D4DDD4;
+}
+
+@theme inline {
+  --font-sans: var(--font-sans, 'Inter'), system-ui, sans-serif;
+  --font-serif: var(--font-serif, 'Playfair Display'), Georgia, serif;
+  --font-mono: 'Geist Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Custom brand tokens */
+  --color-cream: var(--cream);
+  --color-nude: var(--nude);
+  --color-gold: var(--gold);
+  --color-soft-brown: var(--soft-brown);
+  --color-warm-gray: var(--warm-gray);
+  --color-blush: var(--blush);
+  --color-sage: var(--sage);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Selection color */
+  ::selection {
+    background-color: var(--gold);
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  /* Luxury spacing utilities */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  .container-luxury {
+    @apply max-w-7xl mx-auto px-5 md:px-8 lg:px-12;
+  }
+  
+  /* Text styles */
+  .heading-display {
+    @apply font-serif text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight;
+  }
+  
+  .heading-large {
+    @apply font-serif text-3xl md:text-4xl lg:text-5xl tracking-tight leading-tight;
+  }
+  
+  .heading-medium {
+    @apply font-serif text-2xl md:text-3xl tracking-tight leading-snug;
+  }
+  
+  .body-large {
+    @apply text-lg md:text-xl leading-relaxed;
+  }
+  
+  /* Smooth hover transitions */
+  .hover-lift {
+    @apply transition-transform duration-300 ease-out hover:-translate-y-1;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-300 ease-out hover:scale-[1.02];
+  }
+  
+  /* Image treatments */
+  .image-soft {
+    @apply rounded-2xl overflow-hidden;
+  }
+  
+  /* Button styles */
+  .btn-luxury {
+    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-medium tracking-wide uppercase transition-all duration-300;
+  }
+  
+  /* Marquee animation */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+  
+  /* Fade in animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+}
