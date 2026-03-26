@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | ZINAÏA Skincare</title>
+  <meta name="description" content="Shop our curated collection of premium skincare products.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">ZINAÏA<span>.</span></a>
+      <nav class="nav-desktop">
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="routines.html" class="nav-link">Routines</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="header-btn search-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+        <button class="header-btn cart-btn" aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span class="cart-count" style="display: none;">0</span>
+        </button>
+        <button class="header-btn menu-btn" aria-label="Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <main style="padding-top: 100px; min-height: 100vh;">
+    <div class="container">
+      <!-- Page Header -->
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <h1 class="heading-large">Shop All Products</h1>
+        <p class="text-muted" style="margin-top: 1rem;">Discover our curated collection of premium skincare</p>
+      </div>
+
+      <!-- Filters -->
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 3rem;">
+        <button class="routine-tab active" onclick="filterProducts('all', this)">All</button>
+        <button class="routine-tab" onclick="filterProducts('serums', this)">Serums</button>
+        <button class="routine-tab" onclick="filterProducts('moisturizers', this)">Moisturizers</button>
+        <button class="routine-tab" onclick="filterProducts('cleansers', this)">Cleansers</button>
+        <button class="routine-tab" onclick="filterProducts('treatments', this)">Treatments</button>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="product-grid" id="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card" data-category="serums">
+          <a href="product.html?id=1">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop" alt="Hydrating Serum" class="product-image">
+              <span class="product-badge">Bestseller</span>
+              <div class="product-quick-add">
+                <button class="product-quick-add-btn" onclick="event.preventDefault(); quickAddToCart(1, 'Hydrating Serum', 349, 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Serums</p>
+              <h3 class="product-name">Hydrating Serum</h3>
+              <p class="product-price">349 DHS</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card" data-category="moisturizers">
+          <a href="product.html?id=2">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=400&fit=crop" alt="Glow Moisturizer" class="product-image">
+              <div class="product-quick-add">
+                <button class="product-quick-add-btn" onclick="event.preventDefault(); quickAddToCart(2, 'Glow Moisturizer', 289, 'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=400&fit=crop')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Moisturizers</p>
+              <h3 class="product-name">Glow Moisturizer</h3>
+              <p class="product-price">289 DHS</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card" data-category="serums">
+          <a href="product.html?id=3">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&h=400&fit=crop" alt="Vitamin C Boost" class="product-image">
+              <span class="product-badge">New</span>
+              <div class="product-quick-add">
+                <button class="product-quick-add-btn" onclick="event.preventDefault(); quickAddToCart(3, 'Vitamin C Boost', 399, 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&h=400&fit=crop')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Serums</p>
+              <h3 class="product-name">Vitamin C Boost</h3>
+              <p class="product-price">399 DHS</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card" data-category="treatments">
+          <a href="product.html?id=4">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=400&h=400&fit=crop" alt="Night Repair Cream" class="product-image">
+              <div class="product-quick-add">
+                <button class="product-quick-add-btn" onclick="event.preventDefault(); quickAddToCart(4, 'Night Repair Cream', 449, 'https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=400&h=400&fit=crop')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Treatments</p>
+              <h3 class="product-name">Night Repair Cream</h3>
+              <p class="product-price">449 DHS</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card" data-category="cleansers">
+          <a href="product.html?id=5">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop" alt="Gentle Cleanser" class="product-image">
+              <div class="product-quick-add">
+                <button class="product-quick-add-btn" onclick="event.preventDefault(); quickAddToCart(5, 'Gentle Cleanser', 199, 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Cleansers</p>
+              <h3 class="product-name">Gentle Cleanser</h3>
+              <p class="product-price">199 DHS</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card" data-category="treatments">
+          <a href="product.html?id=6">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1567721913486-6585f069b332?w=400&h=400&fit=crop" alt="Eye Contour" class="product-image">
+              <div class="product-quick-add">
+                <button class="product-quick-add-btn" onclick="event.preventDefault(); quickAddToCart(6, 'Eye Contour', 329, 'https://images.unsplash.com/photo-1567721913486-6585f069b332?w=400&h=400&fit=crop')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Treatments</p>
+              <h3 class="product-name">Eye Contour</h3>
+              <p class="product-price">329 DHS</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card" data-category="serums">
+          <a href="product.html?id=7">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&h=400&fit=crop" alt="Retinol Serum" class="product-image">
+              <div class="product-quick-add">
+                <button class="product-quick-add-btn" onclick="event.preventDefault(); quickAddToCart(7, 'Retinol Serum', 429, 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&h=400&fit=crop')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Serums</p>
+              <h3 class="product-name">Retinol Serum</h3>
+              <p class="product-price">429 DHS</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card" data-category="moisturizers">
+          <a href="product.html?id=8">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=400&h=400&fit=crop" alt="Rich Night Cream" class="product-image">
+              <span class="product-badge">-20%</span>
+              <div class="product-quick-add">
+                <button class="product-quick-add-btn" onclick="event.preventDefault(); quickAddToCart(8, 'Rich Night Cream', 359, 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=400&h=400&fit=crop')">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  Quick Add
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-category">Moisturizers</p>
+              <h3 class="product-name">Rich Night Cream</h3>
+              <p class="product-price">359 DHS <span class="product-price-original">449 DHS</span></p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" style="margin-top: 4rem;">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p class="footer-copyright">&copy; 2024 ZINAÏA. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide Cart (same as index) -->
+  <div class="slide-cart-overlay"></div>
+  <div class="slide-cart">
+    <div class="slide-cart-header">
+      <h3 class="slide-cart-title">Your Cart</h3>
+      <button class="slide-cart-close" aria-label="Close cart">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="slide-cart-shipping">
+      <p class="slide-cart-shipping-text">Add <strong>499 DHS</strong> more for <strong>FREE shipping</strong></p>
+      <div class="slide-cart-shipping-bar">
+        <div class="slide-cart-shipping-progress" style="width: 0%"></div>
+      </div>
+    </div>
+    <div class="slide-cart-items"></div>
+    <div class="slide-cart-footer">
+      <div class="slide-cart-subtotal">
+        <span class="slide-cart-subtotal-label">Subtotal</span>
+        <span class="slide-cart-subtotal-value">0 DHS</span>
+      </div>
+      <a href="checkout.html" class="btn btn-primary slide-cart-checkout-btn">Checkout</a>
+      <button class="slide-cart-continue">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- Slide Menu -->
+  <div class="slide-menu-overlay"></div>
+  <div class="slide-menu">
+    <div class="slide-menu-header">
+      <span class="slide-menu-logo">ZINAÏA<span>.</span></span>
+      <button class="slide-menu-close" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="slide-menu-content">
+      <nav class="slide-menu-nav">
+        <a href="index.html" class="slide-menu-link">Home</a>
+        <a href="shop.html" class="slide-menu-link">Shop</a>
+        <a href="routines.html" class="slide-menu-link">Routines</a>
+        <a href="about.html" class="slide-menu-link">About</a>
+        <a href="contact.html" class="slide-menu-link">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal-overlay"></div>
+  <div class="search-modal">
+    <div class="search-modal-header">
+      <div class="search-modal-input-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="search-modal-input-icon" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input type="text" class="search-modal-input" placeholder="Search products...">
+      </div>
+      <button class="search-modal-close">Cancel</button>
+    </div>
+    <div class="search-modal-content">
+      <div class="search-modal-section">
+        <h4 class="search-modal-section-title">Popular Searches</h4>
+        <div class="search-modal-popular">
+          <button class="search-modal-popular-item">Serum</button>
+          <button class="search-modal-popular-item">Moisturizer</button>
+          <button class="search-modal-popular-item">Vitamin C</button>
+        </div>
+      </div>
+      <div class="search-modal-section">
+        <h4 class="search-modal-section-title">Results</h4>
+        <div class="search-modal-results"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    function filterProducts(category, btn) {
+      const products = document.querySelectorAll('.product-card');
+      const tabs = document.querySelectorAll('.routine-tab');
+      
+      tabs.forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      
+      products.forEach(product => {
+        if (category === 'all' || product.dataset.category === category) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
