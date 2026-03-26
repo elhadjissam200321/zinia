@@ -15,7 +15,95 @@ document.addEventListener('DOMContentLoaded', function() {
   initAccordions();
   initSmoothScroll();
   initHeaderScroll();
+  initHeroSlider();
 });
+
+/* ================================
+   Hero Slider
+   ================================ */
+
+function initHeroSlider() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const texts = document.querySelectorAll('.hero-text');
+  const dots = document.querySelectorAll('.hero-dot');
+  const prevBtn = document.querySelector('.hero-arrow-prev');
+  const nextBtn = document.querySelector('.hero-arrow-next');
+  const counterCurrent = document.querySelector('.hero-counter-current');
+  
+  if (slides.length === 0) return;
+  
+  let currentSlide = 0;
+  let autoplayTimer = null;
+  let isAnimating = false;
+  const autoplayDelay = 6000;
+  
+  function goToSlide(index) {
+    if (isAnimating || index === currentSlide) return;
+    isAnimating = true;
+    
+    // Update slides
+    slides[currentSlide].classList.remove('active');
+    slides[index].classList.add('active');
+    
+    // Update text
+    texts[currentSlide].classList.remove('active');
+    texts[index].classList.add('active');
+    
+    // Update dots
+    dots[currentSlide].classList.remove('active');
+    dots[index].classList.add('active');
+    
+    // Update counter
+    if (counterCurrent) {
+      counterCurrent.textContent = String(index + 1).padStart(2, '0');
+    }
+    
+    currentSlide = index;
+    
+    // Reset autoplay
+    resetAutoplay();
+    
+    // Allow next animation after transition
+    setTimeout(() => {
+      isAnimating = false;
+    }, 900);
+  }
+  
+  function nextSlide() {
+    const next = currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
+    goToSlide(next);
+  }
+  
+  function prevSlide() {
+    const prev = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+    goToSlide(prev);
+  }
+  
+  function resetAutoplay() {
+    if (autoplayTimer) clearTimeout(autoplayTimer);
+    autoplayTimer = setTimeout(nextSlide, autoplayDelay);
+  }
+  
+  // Event listeners
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+  
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => goToSlide(index));
+  });
+  
+  // Start autoplay
+  resetAutoplay();
+  
+  // Pause on hover (optional)
+  const heroSection = document.querySelector('.hero-fullbleed');
+  if (heroSection) {
+    heroSection.addEventListener('mouseenter', () => {
+      if (autoplayTimer) clearTimeout(autoplayTimer);
+    });
+    heroSection.addEventListener('mouseleave', resetAutoplay);
+  }
+}
 
 /* ================================
    Cart Functionality
