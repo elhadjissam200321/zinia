@@ -724,3 +724,129 @@ function quickAddToCart(productId, productName, productPrice, productImage) {
     image: productImage
   });
 }
+
+/* ================================
+   Cart Management Functions
+   ================================ */
+
+function updateCart() {
+  const cartContainer = document.getElementById('cart-items');
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  if (cart.length === 0) {
+    cartContainer.innerHTML = `
+      <div class="cart-empty">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="cart-empty-icon">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <h2 class="cart-empty-title">Your cart is empty</h2>
+        <p class="cart-empty-text">Add some premium skincare products to get started.</p>
+        <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+      </div>
+    `;
+    updateCartSummary();
+    return;
+  }
+  
+  let html = '';
+  let subtotal = 0;
+  
+  cart.forEach((item, index) => {
+    const itemTotal = (item.price || 0) * (item.quantity || 1);
+    subtotal += itemTotal;
+    
+    html += `
+      <div class="cart-item">
+        <div class="cart-item-image">
+          <img src="${item.image || 'https://via.placeholder.com/100'}" alt="${item.name}">
+        </div>
+        <div class="cart-item-content">
+          <div class="cart-item-header">
+            <h3 class="cart-item-title">${item.name}</h3>
+            <span class="cart-item-price">$${(item.price || 0).toFixed(2)}</span>
+          </div>
+          <div class="cart-item-variant">
+            <span>${item.size ? 'Size: ' + item.size : ''} ${item.size && item.color ? '|' : ''} ${item.color ? 'Color: ' + item.color : ''}</span>
+          </div>
+          <div class="cart-item-footer">
+            <div class="cart-qty-controls">
+              <button class="cart-qty-btn" onclick="updateItemQty(${index}, ${(item.quantity || 1) - 1})">−</button>
+              <span class="cart-qty-value">${item.quantity || 1}</span>
+              <button class="cart-qty-btn" onclick="updateItemQty(${index}, ${(item.quantity || 1) + 1})">+</button>
+            </div>
+            <button class="cart-item-remove" onclick="removeFromCart(${index})">Remove</button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  
+  cartContainer.innerHTML = html;
+  localStorage.setItem('cartSubtotal', subtotal.toFixed(2));
+  updateCartSummary();
+}
+
+function updateCartSummary() {
+  const subtotal = parseFloat(localStorage.getItem('cartSubtotal')) || 0;
+  const taxRate = 0.1; // 10% tax
+  const tax = subtotal * taxRate;
+  const total = subtotal + tax;
+  
+  document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+  document.getElementById('tax').textContent = '$' + tax.toFixed(2);
+  document.getElementById('total').textContent = '$' + total.toFixed(2);
+}
+
+function updateItemQty(index, newQty) {
+  if (newQty < 1) {
+    removeFromCart(index);
+    return;
+  }
+  
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  if (cart[index]) {
+    cart[index].quantity = newQty;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCart();
+  }
+}
+
+function removeFromCart(index) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCart();
+}
+
+function applyPromo() {
+  const promoCode = document.getElementById('promo-code').value.trim();
+  if (!promoCode) return;
+  
+  // Simple promo code logic - customize as needed
+  const promoCodes = {
+    'WELCOME10': 0.10,
+    'SAVE15': 0.15,
+    'LOYAL20': 0.20
+  };
+  
+  if (promoCodes[promoCode]) {
+    alert('Promo code applied: ' + (promoCodes[promoCode] * 100) + '% discount');
+  } else {
+    alert('Invalid promo code');
+  }
+}
+
+function goToCheckout() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  if (cart.length === 0) {
+    alert('Your cart is empty');
+    return;
+  }
+  window.location.href = 'checkout.html';
+}
+
+// Load cart on page load
+if (document.body.contains(document.getElementById('cart-items'))) {
+  updateCart();
+}
+
