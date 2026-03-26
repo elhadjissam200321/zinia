@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | ZINAIA Skincare</title>
+  <meta name="description" content="Complete your ZINAIA skincare order securely.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Minimal Checkout Header -->
+  <header class="checkout-header">
+    <div class="checkout-header-inner">
+      <a href="index.html" class="logo">ZINAIA<span>.</span></a>
+      <div class="checkout-steps">
+        <div class="checkout-step active" id="step-indicator-1">
+          <span class="checkout-step-num">1</span>
+          <span class="checkout-step-label">Informations</span>
+        </div>
+        <div class="checkout-step-line"></div>
+        <div class="checkout-step" id="step-indicator-2">
+          <span class="checkout-step-num">2</span>
+          <span class="checkout-step-label">Livraison</span>
+        </div>
+        <div class="checkout-step-line"></div>
+        <div class="checkout-step" id="step-indicator-3">
+          <span class="checkout-step-num">3</span>
+          <span class="checkout-step-label">Paiement</span>
+        </div>
+      </div>
+      <a href="panier.html" class="checkout-back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+        </svg>
+        Retour au panier
+      </a>
+    </div>
+  </header>
+
+  <!-- Checkout Layout -->
+  <main class="checkout-page">
+    <div class="checkout-container">
+
+      <!-- Left: Form Steps -->
+      <div class="checkout-form-col">
+
+        <!-- Step 1: Contact & Shipping Info -->
+        <div class="checkout-step-panel active" id="panel-1">
+
+          <!-- Contact -->
+          <div class="checkout-block">
+            <div class="checkout-block-header">
+              <h2 class="checkout-block-title">Informations de contact</h2>
+              <span class="checkout-block-note">Vous avez un compte? <a href="#">Connectez-vous</a></span>
+            </div>
+            <div class="checkout-form">
+              <div class="form-group">
+                <label class="form-label" for="email">Adresse email</label>
+                <input type="email" id="email" class="checkout-input" placeholder="votre@email.com" autocomplete="email">
+              </div>
+              <label class="checkout-checkbox">
+                <input type="checkbox" checked>
+                <span class="checkbox-mark"></span>
+                M'envoyer les actualites et offres exclusives
+              </label>
+            </div>
+          </div>
+
+          <!-- Shipping Address -->
+          <div class="checkout-block">
+            <h2 class="checkout-block-title">Adresse de livraison</h2>
+            <div class="checkout-form">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="firstname">Prenom</label>
+                  <input type="text" id="firstname" class="checkout-input" placeholder="Marie" autocomplete="given-name">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="lastname">Nom</label>
+                  <input type="text" id="lastname" class="checkout-input" placeholder="Dupont" autocomplete="family-name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="address">Adresse</label>
+                <input type="text" id="address" class="checkout-input" placeholder="12 rue des Lilas" autocomplete="street-address">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="address2">Complement d'adresse <span class="form-label-optional">(optionnel)</span></label>
+                <input type="text" id="address2" class="checkout-input" placeholder="Appartement, suite, etc.">
+              </div>
+              <div class="form-row-3">
+                <div class="form-group">
+                  <label class="form-label" for="city">Ville</label>
+                  <input type="text" id="city" class="checkout-input" placeholder="Paris" autocomplete="address-level2">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="zip">Code postal</label>
+                  <input type="text" id="zip" class="checkout-input" placeholder="75001" autocomplete="postal-code">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="country">Pays</label>
+                  <select id="country" class="checkout-input checkout-select" autocomplete="country">
+                    <option value="FR">France</option>
+                    <option value="BE">Belgique</option>
+                    <option value="CH">Suisse</option>
+                    <option value="LU">Luxembourg</option>
+                    <option value="CA">Canada</option>
+                    <option value="MA">Maroc</option>
+                    <option value="DZ">Algerie</option>
+                    <option value="TN">Tunisie</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Telephone <span class="form-label-optional">(optionnel)</span></label>
+                <input type="tel" id="phone" class="checkout-input" placeholder="+33 6 00 00 00 00" autocomplete="tel">
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-nav">
+            <a href="panier.html" class="checkout-nav-back">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+              </svg>
+              Retour au panier
+            </a>
+            <button class="btn btn-primary checkout-nav-next" onclick="goToStep(2)">
+              Continuer vers la livraison
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Shipping Method -->
+        <div class="checkout-step-panel" id="panel-2">
+
+          <div class="checkout-block">
+            <!-- Recap info -->
+            <div class="checkout-recap">
+              <div class="recap-row">
+                <span class="recap-label">Contact</span>
+                <span class="recap-value" id="recap-email">—</span>
+                <button class="recap-edit" onclick="goToStep(1)">Modifier</button>
+              </div>
+              <div class="recap-row">
+                <span class="recap-label">Adresse</span>
+                <span class="recap-value" id="recap-address">—</span>
+                <button class="recap-edit" onclick="goToStep(1)">Modifier</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-block">
+            <h2 class="checkout-block-title">Mode de livraison</h2>
+            <div class="shipping-options">
+              <label class="shipping-option">
+                <input type="radio" name="shipping" value="standard" checked onchange="updateShipping(this)">
+                <div class="shipping-option-content">
+                  <div class="shipping-option-left">
+                    <span class="shipping-option-name">Livraison Standard</span>
+                    <span class="shipping-option-duration">5-7 jours ouvrables</span>
+                  </div>
+                  <span class="shipping-option-price">4,90 EUR</span>
+                </div>
+              </label>
+              <label class="shipping-option">
+                <input type="radio" name="shipping" value="express" onchange="updateShipping(this)">
+                <div class="shipping-option-content">
+                  <div class="shipping-option-left">
+                    <span class="shipping-option-name">Livraison Express</span>
+                    <span class="shipping-option-duration">2-3 jours ouvrables</span>
+                  </div>
+                  <span class="shipping-option-price">9,90 EUR</span>
+                </div>
+              </label>
+              <label class="shipping-option">
+                <input type="radio" name="shipping" value="free" onchange="updateShipping(this)">
+                <div class="shipping-option-content">
+                  <div class="shipping-option-left">
+                    <span class="shipping-option-name">Livraison Gratuite</span>
+                    <span class="shipping-option-duration">7-10 jours ouvrables — Commandes +50 EUR</span>
+                  </div>
+                  <span class="shipping-option-price free">GRATUIT</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="checkout-nav">
+            <button class="checkout-nav-back" onclick="goToStep(1)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+              </svg>
+              Retour aux informations
+            </button>
+            <button class="btn btn-primary checkout-nav-next" onclick="goToStep(3)">
+              Continuer vers le paiement
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Payment -->
+        <div class="checkout-step-panel" id="panel-3">
+
+          <div class="checkout-block">
+            <!-- Recap info -->
+            <div class="checkout-recap">
+              <div class="recap-row">
+                <span class="recap-label">Contact</span>
+                <span class="recap-value" id="recap-email-2">—</span>
+                <button class="recap-edit" onclick="goToStep(1)">Modifier</button>
+              </div>
+              <div class="recap-row">
+                <span class="recap-label">Adresse</span>
+                <span class="recap-value" id="recap-address-2">—</span>
+                <button class="recap-edit" onclick="goToStep(1)">Modifier</button>
+              </div>
+              <div class="recap-row">
+                <span class="recap-label">Livraison</span>
+                <span class="recap-value" id="recap-shipping">—</span>
+                <button class="recap-edit" onclick="goToStep(2)">Modifier</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-block">
+            <h2 class="checkout-block-title">Paiement</h2>
+            <p class="checkout-secure-note">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="14" height="14">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              Toutes les transactions sont securisees et chiffrees.
+            </p>
+
+            <!-- Payment Method Tabs -->
+            <div class="payment-tabs">
+              <button class="payment-tab active" onclick="switchPayment('card', this)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
+                Carte bancaire
+              </button>
+              <button class="payment-tab" onclick="switchPayment('paypal', this)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 00-.607-.541c-.013.076-.026.175-.041.26-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 00-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 00.554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 01.923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.477z"/>
+                </svg>
+                PayPal
+              </button>
+            </div>
+
+            <!-- Card Form -->
+            <div class="payment-panel active" id="payment-card">
+              <div class="checkout-form">
+                <div class="form-group">
+                  <label class="form-label" for="card-name">Nom sur la carte</label>
+                  <input type="text" id="card-name" class="checkout-input" placeholder="MARIE DUPONT" autocomplete="cc-name">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="card-number">Numero de carte</label>
+                  <div class="card-input-wrapper">
+                    <input type="text" id="card-number" class="checkout-input" placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number" oninput="formatCardNumber(this)">
+                    <div class="card-icons">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="30" height="20">
+                        <path fill="#1565C0" d="M45 35a4 4 0 01-4 4H7a4 4 0 01-4-4V13a4 4 0 014-4h34a4 4 0 014 4v22z"/>
+                        <path fill="#FFF" d="M15.186 19l-2.626 7.832c0 0-.667-3.313-.733-3.729-1.495-3.411-3.701-3.221-3.701-3.221L10.726 30v-.002h3.161L18.258 19H15.186zM17.689 30L20.56 30 22.296 19 19.389 19zM38.008 19h-3.021l-4.71 11h2.852l.588-1.571h3.596L37.619 30h2.613L38.008 19zM34.513 26.328l1.563-4.157.818 4.157H34.513zM26.369 22.11c0-.607.498-1.041 1.926-1.041.928 0 1.991.448 1.991.448l.424-2.101s-1.096-.434-2.584-.434c-2.415 0-4.067 1.358-4.067 3.188 0 2.879 3.932 2.91 3.932 4.479 0 .26-.173.985-1.984.985-1.031 0-2.217-.434-2.217-.434l-.452 2.175s1.139.526 2.857.526c2.721 0 4.336-1.414 4.336-3.481.001-3.034-3.162-3.31-3.162-4.31z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label class="form-label" for="card-expiry">Date d'expiration</label>
+                    <input type="text" id="card-expiry" class="checkout-input" placeholder="MM / AA" maxlength="7" autocomplete="cc-exp" oninput="formatExpiry(this)">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="card-cvv">
+                      CVV
+                      <button class="cvv-hint" type="button" title="3 ou 4 chiffres au dos de votre carte">?</button>
+                    </label>
+                    <input type="text" id="card-cvv" class="checkout-input" placeholder="123" maxlength="4" autocomplete="cc-csc">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PayPal Panel -->
+            <div class="payment-panel" id="payment-paypal">
+              <div class="paypal-info">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 124 33" width="100" height="28">
+                  <path fill="#253B80" d="M46.211 6.749h-6.839a.95.95 0 00-.939.802l-2.766 17.537a.57.57 0 00.564.658h3.265a.95.95 0 00.939-.803l.746-4.73a.95.95 0 01.938-.803h2.165c4.505 0 7.105-2.18 7.784-6.5.306-1.89.012-3.375-.872-4.415-.972-1.142-2.696-1.746-4.985-1.746zM47 13.154c-.374 2.454-2.249 2.454-4.062 2.454h-1.032l.724-4.583a.57.57 0 01.563-.481h.473c1.235 0 2.4 0 3.002.704.359.42.468 1.044.332 1.906z"/>
+                </svg>
+                <p>Vous serez redirige vers PayPal pour completer votre paiement en toute securite.</p>
+                <button class="btn btn-paypal" onclick="placeOrder()">
+                  Payer avec PayPal
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Billing Address -->
+          <div class="checkout-block">
+            <h2 class="checkout-block-title">Adresse de facturation</h2>
+            <div class="billing-options">
+              <label class="checkout-radio">
+                <input type="radio" name="billing" value="same" checked onchange="toggleBillingAddress(false)">
+                <span class="radio-mark"></span>
+                Identique a l'adresse de livraison
+              </label>
+              <label class="checkout-radio">
+                <input type="radio" name="billing" value="different" onchange="toggleBillingAddress(true)">
+                <span class="radio-mark"></span>
+                Utiliser une adresse differente
+              </label>
+            </div>
+            <div class="billing-address-form" id="billing-address-form" style="display:none;">
+              <div class="form-row-2" style="margin-top:1rem;">
+                <div class="form-group">
+                  <label class="form-label" for="billing-firstname">Prenom</label>
+                  <input type="text" id="billing-firstname" class="checkout-input" placeholder="Marie">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="billing-lastname">Nom</label>
+                  <input type="text" id="billing-lastname" class="checkout-input" placeholder="Dupont">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="billing-address">Adresse</label>
+                <input type="text" id="billing-address" class="checkout-input" placeholder="12 rue des Lilas">
+              </div>
+              <div class="form-row-3">
+                <div class="form-group">
+                  <label class="form-label" for="billing-city">Ville</label>
+                  <input type="text" id="billing-city" class="checkout-input" placeholder="Paris">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="billing-zip">Code postal</label>
+                  <input type="text" id="billing-zip" class="checkout-input" placeholder="75001">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="billing-country">Pays</label>
+                  <select id="billing-country" class="checkout-input checkout-select">
+                    <option value="FR">France</option>
+                    <option value="BE">Belgique</option>
+                    <option value="CH">Suisse</option>
+                    <option value="LU">Luxembourg</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-nav">
+            <button class="checkout-nav-back" onclick="goToStep(2)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+              </svg>
+              Retour a la livraison
+            </button>
+            <button class="btn btn-primary checkout-nav-next" onclick="placeOrder()">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              Confirmer la commande
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Order Summary -->
+      <aside class="checkout-summary-col">
+        <div class="checkout-summary">
+          <button class="checkout-summary-toggle" onclick="toggleSummary(this)" aria-expanded="false">
+            <span class="summary-toggle-label">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              Voir le recapitulatif
+            </span>
+            <span class="summary-toggle-total" id="summary-total-mobile">0,00 EUR</span>
+          </button>
+
+          <div class="checkout-summary-body" id="checkout-summary-body">
+            <!-- Items list -->
+            <div class="checkout-order-items" id="checkout-order-items">
+              <!-- Populated by JS -->
+            </div>
+
+            <!-- Promo -->
+            <div class="checkout-promo">
+              <div class="checkout-promo-input">
+                <input type="text" class="checkout-input" id="checkout-promo" placeholder="Code promo ou carte cadeau">
+                <button class="btn btn-outline" onclick="applyPromoCheckout()">Appliquer</button>
+              </div>
+            </div>
+
+            <!-- Totals -->
+            <div class="checkout-totals">
+              <div class="checkout-total-row">
+                <span>Sous-total</span>
+                <span id="co-subtotal">0,00 EUR</span>
+              </div>
+              <div class="checkout-total-row">
+                <span>Livraison</span>
+                <span id="co-shipping">—</span>
+              </div>
+              <div class="checkout-total-row checkout-total-final">
+                <span>Total</span>
+                <span id="co-total">0,00 EUR</span>
+              </div>
+              <p class="checkout-tax-note">Taxes incluses</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Order Confirmation Modal -->
+  <div class="order-success-overlay" id="order-success" style="display:none;">
+    <div class="order-success-modal">
+      <div class="order-success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h2 class="order-success-title">Commande confirmee !</h2>
+      <p class="order-success-text">Merci pour votre achat. Un email de confirmation vous a ete envoye.</p>
+      <p class="order-success-order">Numero de commande: <strong id="order-number">#ZIN-000001</strong></p>
+      <a href="index.html" class="btn btn-primary" style="margin-top:1.5rem;">Retour a l'accueil</a>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    /* ================================
+       Checkout JS
+       ================================ */
+
+    let currentStep = 1;
+    let shippingCost = 4.90;
+
+    // Go to step
+    function goToStep(step) {
+      // Validate step 1 before advancing
+      if (step > 1) {
+        const email = document.getElementById('email').value.trim();
+        const firstname = document.getElementById('firstname').value.trim();
+        const lastname = document.getElementById('lastname').value.trim();
+        const address = document.getElementById('address').value.trim();
+        if (!email || !firstname || !lastname || !address) {
+          alert('Veuillez remplir tous les champs obligatoires.');
+          if (currentStep !== 1) goToStep(1);
+          return;
+        }
+        // Populate recaps
+        const city = document.getElementById('city').value;
+        const zip = document.getElementById('zip').value;
+        document.getElementById('recap-email').textContent = email;
+        document.getElementById('recap-email-2').textContent = email;
+        const addrStr = firstname + ' ' + lastname + ', ' + address + (city ? ', ' + city : '') + (zip ? ' ' + zip : '');
+        document.getElementById('recap-address').textContent = addrStr;
+        document.getElementById('recap-address-2').textContent = addrStr;
+      }
+
+      // Hide all panels and deactivate steps
+      document.querySelectorAll('.checkout-step-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.checkout-step').forEach(s => s.classList.remove('active', 'done'));
+
+      // Mark previous steps as done
+      for (let i = 1; i < step; i++) {
+        document.getElementById('step-indicator-' + i).classList.add('done');
+      }
+      document.getElementById('step-indicator-' + step).classList.add('active');
+      document.getElementById('panel-' + step).classList.add('active');
+      currentStep = step;
+
+      // Scroll to top of form
+      document.querySelector('.checkout-form-col').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Update shipping cost
+    function updateShipping(radio) {
+      const costs = { standard: 4.90, express: 9.90, free: 0 };
+      const labels = { standard: 'Livraison Standard', express: 'Livraison Express', free: 'Livraison Gratuite' };
+      shippingCost = costs[radio.value];
+      document.getElementById('co-shipping').textContent = shippingCost === 0 ? 'GRATUIT' : shippingCost.toFixed(2).replace('.', ',') + ' EUR';
+      document.getElementById('recap-shipping').textContent = labels[radio.value];
+      updateCheckoutTotal();
+    }
+
+    // Toggle billing address
+    function toggleBillingAddress(show) {
+      document.getElementById('billing-address-form').style.display = show ? 'block' : 'none';
+    }
+
+    // Switch payment method
+    function switchPayment(method, btn) {
+      document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.payment-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('payment-' + method).classList.add('active');
+    }
+
+    // Format card number
+    function formatCardNumber(input) {
+      let val = input.value.replace(/\D/g, '').substring(0, 16);
+      input.value = val.replace(/(.{4})/g, '$1 ').trim();
+    }
+
+    // Format expiry
+    function formatExpiry(input) {
+      let val = input.value.replace(/\D/g, '').substring(0, 4);
+      if (val.length >= 3) val = val.substring(0, 2) + ' / ' + val.substring(2);
+      input.value = val;
+    }
+
+    // Toggle mobile summary
+    function toggleSummary(btn) {
+      const body = document.getElementById('checkout-summary-body');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+      body.style.display = expanded ? 'none' : 'block';
+      btn.querySelector('.summary-toggle-label').textContent = expanded ? 'Voir le recapitulatif' : 'Masquer le recapitulatif';
+    }
+
+    // Apply promo
+    function applyPromoCheckout() {
+      const code = document.getElementById('checkout-promo').value.trim().toUpperCase();
+      const codes = { 'WELCOME10': 0.10, 'SAVE15': 0.15, 'LOYAL20': 0.20 };
+      if (codes[code]) {
+        alert('Code promo applique : -' + (codes[code] * 100) + '%');
+      } else {
+        alert('Code promo invalide.');
+      }
+    }
+
+    // Load cart items into summary
+    function loadCheckoutSummary() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const container = document.getElementById('checkout-order-items');
+      let subtotal = 0;
+      let html = '';
+
+      if (cart.length === 0) {
+        html = '<p style="color:var(--muted-foreground);font-size:.875rem;padding:1rem 0;">Votre panier est vide.</p>';
+      } else {
+        cart.forEach(item => {
+          const itemTotal = (item.price || 0) * (item.quantity || 1);
+          subtotal += itemTotal;
+          html += `
+            <div class="co-item">
+              <div class="co-item-image">
+                <img src="${item.image || 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=80&q=80'}" alt="${item.name}">
+                <span class="co-item-qty">${item.quantity || 1}</span>
+              </div>
+              <div class="co-item-info">
+                <span class="co-item-name">${item.name}</span>
+                ${item.size ? '<span class="co-item-variant">' + item.size + '</span>' : ''}
+              </div>
+              <span class="co-item-price">${itemTotal.toFixed(2).replace('.', ',')} EUR</span>
+            </div>
+          `;
+        });
+      }
+
+      // Fallback demo items if cart is empty
+      if (cart.length === 0) {
+        subtotal = 89.00;
+        html = `
+          <div class="co-item">
+            <div class="co-item-image">
+              <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=80&q=80" alt="Serum Eclat">
+              <span class="co-item-qty">1</span>
+            </div>
+            <div class="co-item-info">
+              <span class="co-item-name">Serum Eclat Intense</span>
+              <span class="co-item-variant">30ml</span>
+            </div>
+            <span class="co-item-price">59,00 EUR</span>
+          </div>
+          <div class="co-item">
+            <div class="co-item-image">
+              <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=80&q=80" alt="Creme Hydratante">
+              <span class="co-item-qty">1</span>
+            </div>
+            <div class="co-item-info">
+              <span class="co-item-name">Creme Hydratante Profonde</span>
+              <span class="co-item-variant">50ml</span>
+            </div>
+            <span class="co-item-price">30,00 EUR</span>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+      updateCheckoutTotal(subtotal);
+    }
+
+    function updateCheckoutTotal(subtotal) {
+      if (subtotal === undefined) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        subtotal = cart.reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 1), 0) || 89.00;
+      }
+      const total = subtotal + shippingCost;
+      const fmt = n => n.toFixed(2).replace('.', ',') + ' EUR';
+      document.getElementById('co-subtotal').textContent = fmt(subtotal);
+      document.getElementById('co-shipping').textContent = shippingCost === 0 ? 'GRATUIT' : fmt(shippingCost);
+      document.getElementById('co-total').textContent = fmt(total);
+      document.getElementById('summary-total-mobile').textContent = fmt(total);
+    }
+
+    // Place order
+    function placeOrder() {
+      const orderNum = '#ZIN-' + String(Math.floor(Math.random() * 900000) + 100000);
+      document.getElementById('order-number').textContent = orderNum;
+      document.getElementById('order-success').style.display = 'flex';
+      localStorage.removeItem('cart');
+    }
+
+    // Init
+    loadCheckoutSummary();
+  </script>
+</body>
+</html>
